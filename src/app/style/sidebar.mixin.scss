@@ -1,0 +1,39 @@
+@import './variable.scss';
+@mixin sidebar() {
+    .p-drawer {
+        background-color: $color-primary !important;
+    }
+
+    // .p-drawer-mask {
+    //     width : auto !important;
+    // }
+
+    .p-drawer .p-button {
+        color: rgb(225, 225, 225) !important;
+        border-color: rgba(181, 181, 181, 0.427) !important 
+    }
+
+    .p-drawer .p-button:hover {
+        background-color: rgba(247, 248, 249, 0.110) !important;
+    }
+    .hover-text:hover {
+        i, span {
+
+            color: rgb(201, 201, 201) !important;
+        }
+    }
+
+    .hover-bg:hover {
+        background-color: #a4d4ff0a ;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar {
+        display: none;
+    }
+
+    .active-category {
+         background-color: rgba(247, 248, 249, 0.110) !important;
+    }
+
+   
+}

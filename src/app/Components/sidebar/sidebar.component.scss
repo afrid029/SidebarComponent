@@ -1,0 +1,32 @@
+@import '../../style/sidebar.mixin.scss';
+
+::ng-deep {
+    @include sidebar();
+}
+
+
+.slide-down {
+    animation: slideDown 0.3s linear forwards alternate;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-270deg);
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.3s linear forwards alternate;
+}
+
+@keyframes slideUp {
+    0% {
+        transform: rotate(-270deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

@@ -1,0 +1,162 @@
+<div class="card flex justify-center">
+    <p-drawer #drawerRef [(visible)]="visible">
+        <ng-template #headless>
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between px-6 pt-4 shrink-0 bg-surface-800 pb-2">
+                    <span class="inline-flex items-center gap-2">
+
+                        <span class="fw-bold cursor-pointer text-xl text-primary text-white" (click)="navigateTo('/')">Quadrabay</span>
+                    </span>
+                    <span>
+                        <p-button type="button" (click)="closeCallback($event)" icon="pi pi-times" rounded="true"
+                            outlined="true" styleClass="h-8 w-8"></p-button>
+                    </span>
+                </div>
+                <div class="overflow-y-auto">
+                    <ul class="list-none pt-2 pr-2 pb-1 pl-2 m-0 overflow-hidden">
+                    @for (item of Contents; track $index) {
+                        <li>
+                            @if (item.child && item.child.length > 0) {
+                            <a pRipple pStyleClass="@next" enterFromClass="hidden"
+                                enterActiveClass="animate-slidedown" leaveToClass="hidden"
+                                leaveActiveClass="animate-slideup"
+                                class="p-3 flex items-center no-underline text-surface-600 dark:text-surface-200 cursor-pointer p-ripple"
+                                (click)="toggleMain($event)"
+                                >
+                                <i class="{{item.icon}} text-white mr-2"></i>
+                                <span class="font-medium text-white">{{item.name}}</span>
+                                <i class="pi pi-chevron-right ml-auto text-white slide-down"></i>
+                            </a>
+                            <ul class="list-none py-0 pl-4 pr-0 m-0 overflow-hidden">
+                                @for(fchild of item.child; track $index) {
+                                <li>
+                                    @if (fchild.child && fchild.child.length > 0) {
+                                    <a
+                                   pRipple
+                                    pStyleClass="@next"
+                                    enterFromClass="hidden"
+                                    enterActiveClass="animate-slidedown"
+                                    leaveToClass="hidden"
+                                    leaveActiveClass="animate-slideup"
+                                    class="hover-text flex items-center no-underline cursor-pointer p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple "
+                                    (click)="toggleParent($event)"
+
+                                    >
+                                        <i class="{{fchild.icon}} mr-2 text-white"></i>
+                                        <span class="font-medium  text-white ">{{fchild.name}}</span>
+                                        <i class="pi pi-chevron-right ml-auto  text-white"></i>
+                                    </a>
+                                    <ul
+                                        class="list-none py-0 pl-4 pr-0 m-0 hidden overflow-y-hidden transition-all duration-[400ms] ease-in-out">
+                                        @for(schild of fchild.child; track $index) {
+                                        <li>
+                                            @if (schild.child && schild.child.length > 0){
+                                            <a 
+                                          pRipple
+                                            pStyleClass="@next"
+                                            enterFromClass="hidden"
+                                            enterActiveClass="animate-slidedown"
+                                            leaveToClass="hidden"
+                                            leaveActiveClass="animate-slideup"
+                                            class="hover-text flex items-center cursor-pointer no-underline p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple"
+                                            (click)="toggleParent($event)"
+                                            >
+                                                <i class="{{schild.icon}} mr-2 text-white"></i>
+                                                <span class="font-medium  text-white">{{schild.name}}</span>
+                                                <i class="pi pi-chevron-right ml-auto  text-white"></i>
+                                            </a>
+                                            <ul
+                                                class="list-none py-0 pl-4 pr-0 m-0 hidden overflow-y-hidden transition-all duration-[400ms] ease-in-out">
+                                                @for(tchild of schild.child; track $index) {
+                                                <li>
+                                                    @if (tchild.child && tchild.child.length > 0 ) {
+                                                    <a 
+                                                    pRipple
+                                                    pStyleClass="@next"
+                                                    enterFromClass="hidden"
+                                                    enterActiveClass="animate-slidedown"
+                                                    leaveToClass="hidden"
+                                                    leaveActiveClass="animate-slideup"
+                                                    class="hover-text flex items-center cursor-pointer no-underline p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple"
+                                                    (click)="toggleParent($event)"
+                                                    >
+                                                        <i class="{{tchild.icon}} mr-2 text-white"></i>
+                                                        <span class="font-medium  text-white">{{tchild.name}}</span>
+                                                        <i class="pi pi-chevron-right ml-auto text-white"></i>
+                                                    </a>
+                                                    <ul
+                                                        class="list-none py-0 pl-4 pr-0 m-0 hidden overflow-y-hidden transition-all duration-[400ms] ease-in-out">
+                                                        @for(lchild of tchild.child; track $index) {
+                                                        <li>
+                                                            <a pRipple
+                                                            (click)="navigateTo(lchild.route)"
+                                                                class="hover-text flex items-center cursor-pointer no-underline p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+                                                                <i class="{{lchild.icon}} mr-2 text-white"></i>
+                                                                <span class="font-medium  text-white">{{lchild.name}}</span>
+                                                            </a>
+                                                        </li>
+                                                        }
+                                                    </ul>
+                                                    } @else {
+                                                    <a pRipple
+                                                     (click)="navigateTo(tchild.route)"
+                                                        class="hover-text flex items-center cursor-pointer no-underline p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+                                                        <i class="{{tchild.icon}} mr-2 text-white"></i>
+                                                        <span class="font-medium  text-white">{{tchild.name}}</span>
+                                                    </a>
+                                                    }
+                                                </li>
+                                                }
+                                            </ul>
+                                            } @else {
+                                            <a pRipple
+                                              (click)="navigateTo(schild.route)"
+                                                class="hover-text flex items-center cursor-pointer no-underline p-3 hover-bg rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+                                                <i class="{{schild.icon}} mr-2 text-white"></i>
+                                                <span class="font-medium  text-white">{{schild.name}}</span>
+                                            </a>
+                                            }
+                                        </li>
+                                        }
+                                    </ul>
+                                    } @else {
+                                    <a pRipple
+                                      (click)="navigateTo(fchild.route)"
+                                        class="hover-text flex items-center cursor-pointer p-3 hover-bg no-underline rounded-border text-surface-700 dark:text-surface-100 hover:bg-surface-100 dark:hover:bg-surface-700 duration-150 transition-colors p-ripple">
+                                        <i class="{{fchild.icon}} mr-2  text-white"></i>
+                                        <span class="font-medium  text-white ">{{fchild.name}}</span>
+                                    </a>
+                                    }
+
+                                </li>
+                                }
+                            </ul>
+                            } @else {
+                            <div 
+                            pRipple pStyleClass="@next" enterFromClass="hidden"
+                                enterActiveClass="animate-slidedown" leaveToClass="hidden"
+                                leaveActiveClass="animate-slideup"
+                             
+                            
+                            class="hover-text flex items-center cursor-pointer p-3 no-underline rounded-border text-surface-700 dark:text-surface-100 hover-bg duration-150 transition-colors p-ripple"
+                            (click)="navigateTo(item.route)"
+                            >
+                                <i class="{{item.icon}} mr-2  text-white"></i>
+                                <span class="font-medium  text-white">{{item.name}}</span>
+
+                            </div>
+                            }
+
+                        </li>
+                    }
+                </ul>
+                </div>
+            </div>
+        </ng-template>
+    </p-drawer>
+    <p-button (click)="openSlideBar()" icon="pi pi-bars" />
+    <div class="card flex flex-col items-center gap-4">
+    <p-selectbutton [(ngModel)]="role" [options]="options" size="small" optionValue="value" optionLabel="label" allowEmpty="false" def/>
+    
+</div>
+</div>
