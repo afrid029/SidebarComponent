@@ -2,6 +2,36 @@
 
 ::ng-deep {
     @include sidebar();
+    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider, .p-toggleswitch-input:hover{
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        background: rgb(113 168 239 / 28%) !important;
+        backdrop-filter: blur(6.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+    }
+
+      .p-toggleswitch .p-toggleswitch-slider, .p-toggleswitch-input:hover{
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        background: rgba(5, 43, 104, 0.678) !important;
+        backdrop-filter: blur(6.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+    }
+
+    .p-toggleswitch .p-toggleswitch-handle {
+        background-color: rgba(168, 209, 255, 0) !important;
+        color: rgb(147, 202, 249) !important;
+        i {
+            font-weight: 600;
+        }
+    }
+    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
+         color: rgb(18, 111, 192) !important;
+    }
+}
+   
+
+*{
+    box-sizing: border-box !important;
+    
 }
 
 
@@ -28,5 +58,91 @@
     }
     100% {
         transform: rotate(0deg);
+    }
+}
+
+.sidebar {
+    // width: 50px;
+    // max-width: 60px;
+    transition: all 0.3s linear;
+    // border-right: 2px solid blue;
+  /* From https://css.glass */
+background: rgba(255, 255, 255, 1);
+border-radius: 8px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.7px);
+-webkit-backdrop-filter: blur(6.7px);
+}   
+.sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.on-expand-block {
+    display: none;
+}
+
+.on-expand-flex {
+    display: none;
+}
+
+.slide-title {
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+}
+
+.cust-font {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #000000da !important;
+}
+
+.item-icon {
+    color: #000000da !important;
+}
+
+.pi-chevron-right {
+    font-size: 0.75rem !important;
+   color: #000000da !important;
+}
+
+.fixed-bar {
+     width: 350px;
+      .slide-list {
+        justify-content: start !important;
+        // margin-left: 1.2rem !important;
+    }
+
+    .on-expand-block {
+        display: block;
+    }
+    .on-expand-flex {
+        display: flex;
+    }
+     ul {
+        padding-right: 0.75rem;
+    }   
+}
+
+
+.sidebar:hover {
+    // min-width: 50px;
+    width: 350px;
+    // width: max-content;
+    // max-width: 25000px;
+    .slide-list {
+        justify-content: start !important;
+        // margin-left: 1.2rem !important;
+    }
+
+    .on-expand-block {
+        display: block;
+    }
+    .on-expand-flex {
+        display: flex;
+    }
+    ul {
+        padding-right: 0.75rem;
     }
 }

@@ -4,27 +4,25 @@
         background-color: $color-primary !important;
     }
 
-    // .p-drawer-mask {
-    //     width : auto !important;
-    // }
+    .p-drawer-mask {
+        width : auto !important;
+    }
 
     .p-drawer .p-button {
         color: rgb(225, 225, 225) !important;
         border-color: rgba(181, 181, 181, 0.427) !important 
     }
 
-    .p-drawer .p-button:hover {
-        background-color: rgba(247, 248, 249, 0.110) !important;
-    }
+ 
     .hover-text:hover {
         i, span {
 
-            color: rgb(201, 201, 201) !important;
+            color: rgb(69 142 255) !important;
         }
     }
 
     .hover-bg:hover {
-        background-color: #a4d4ff0a ;
+       background-color: rgb(164 212 255 / 19%);
     }
 
     .overflow-y-auto::-webkit-scrollbar {
@@ -32,7 +30,11 @@
     }
 
     .active-category {
-         background-color: rgba(247, 248, 249, 0.110) !important;
+         background-color: rgb(164 212 255 / 19%) !important;
+          i, span {
+
+            color: rgb(69 142 255) !important;
+        }
     }
 
    
