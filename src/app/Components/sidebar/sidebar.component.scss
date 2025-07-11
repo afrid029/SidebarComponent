@@ -1,148 +1,50 @@
 @import '../../style/sidebar.mixin.scss';
-
-::ng-deep {
-    @include sidebar();
-    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider, .p-toggleswitch-input:hover{
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        background: rgb(113 168 239 / 28%) !important;
-        backdrop-filter: blur(6.7px);
-        -webkit-backdrop-filter: blur(6.7px);
-    }
-
-      .p-toggleswitch .p-toggleswitch-slider, .p-toggleswitch-input:hover{
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        background: rgba(5, 43, 104, 0.678) !important;
-        backdrop-filter: blur(6.7px);
-        -webkit-backdrop-filter: blur(6.7px);
-    }
-
-    .p-toggleswitch .p-toggleswitch-handle {
-        background-color: rgba(168, 209, 255, 0) !important;
-        color: rgb(147, 202, 249) !important;
-        i {
-            font-weight: 600;
-        }
-    }
-    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
-         color: rgb(18, 111, 192) !important;
-    }
-}
-   
-
-*{
-    box-sizing: border-box !important;
+@include sidebar();
     
-}
-
-
-.slide-down {
-    animation: slideDown 0.3s linear forwards alternate;
-}
-
-@keyframes slideDown {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(-270deg);
-    }
-}
-
-.slide-up {
-    animation: slideUp 0.3s linear forwards alternate;
-}
-
-@keyframes slideUp {
-    0% {
-        transform: rotate(-270deg);
-    }
-    100% {
-        transform: rotate(0deg);
-    }
-}
-
-.sidebar {
-    // width: 50px;
-    // max-width: 60px;
-    transition: all 0.3s linear;
-    // border-right: 2px solid blue;
-  /* From https://css.glass */
-background: rgba(255, 255, 255, 1);
-border-radius: 8px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8.7px);
--webkit-backdrop-filter: blur(6.7px);
-}   
-.sidebar::-webkit-scrollbar {
-    display: none;
-}
-
-.on-expand-block {
-    display: none;
-}
-
-.on-expand-flex {
-    display: none;
-}
-
-.slide-title {
-
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-}
-
-.cust-font {
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 0.9rem;
-    color: #000000da !important;
-}
-
-.item-icon {
-    color: #000000da !important;
-}
-
-.pi-chevron-right {
-    font-size: 0.75rem !important;
-   color: #000000da !important;
-}
-
-.fixed-bar {
-     width: 350px;
-      .slide-list {
-        justify-content: start !important;
-        // margin-left: 1.2rem !important;
+.mobile-side {
+    display: block;
+    z-index: 1000 !important;
+    position: fixed !important;
+    width: 300px !important;
+    .mobile-view.on-expand-block {
+        display: block !important;
     }
 
-    .on-expand-block {
-        display: block;
-    }
+    transform: translateY(-10%);
+    animation: drilldown 0.2s linear forwards alternate;
     .on-expand-flex {
-        display: flex;
+        display: none !important;
     }
-     ul {
-        padding-right: 0.75rem;
-    }   
+    
+        ul {
+            padding-right: 0.75rem;
+        }
 }
 
+.off-mobile-side {
+    animation: drillup 0.3s linear forwards alternate;
+}
 
-.sidebar:hover {
-    // min-width: 50px;
-    width: 350px;
-    // width: max-content;
-    // max-width: 25000px;
-    .slide-list {
-        justify-content: start !important;
-        // margin-left: 1.2rem !important;
+@keyframes drillup {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+        display: none;
     }
 
-    .on-expand-block {
-        display: block;
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
     }
-    .on-expand-flex {
-        display: flex;
+}
+@keyframes drilldown {
+    0% {
+        opacity: 0;
+        transform: translateY(-25%);
     }
-    ul {
-        padding-right: 0.75rem;
+
+    100% {
+        opacity: 1;
+         transform: translateY(0%);
     }
 }

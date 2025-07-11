@@ -13,7 +13,7 @@ export class GetContentService {
        {
             "icon": "pi pi-chart-bar",
             "name" : "Dashboard",
-            "route" : "/dashboard"
+            "route" : "/favourite/dashboard"
        },
        {
             "icon" : "pi pi-github",
@@ -22,7 +22,7 @@ export class GetContentService {
                 {
                     "icon" : "pi pi-code",
                     "name" : "Source code",
-                    "route" : "---"
+                    "route" : "/favourite/project/source"
                 },
                 {
                     "icon" : "pi pi-microchip",
@@ -31,12 +31,12 @@ export class GetContentService {
                         {
                             "icon" : "pi pi-amazon",
                             "name" : "Amazon",
-                            "route" : "/our-amazon"
+                            "route" : "/favourite/project/bussiness/amazon"
                         },
                         {
                             "icon" : "pi pi-google",
                             "name" : "Google",
-                            "route" : "/our-google"
+                            "route" : "/favourite/project/bussiness/google"
                         }
                     ]
                 }
@@ -89,6 +89,12 @@ export class GetContentService {
             } 
         ]
     },
+
+
+
+
+
+    
 
     
   ]

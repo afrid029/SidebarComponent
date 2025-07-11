@@ -1,41 +1,165 @@
 @import './variable.scss';
+
 @mixin sidebar() {
-    .p-drawer {
-        background-color: $color-primary !important;
-    }
 
-    .p-drawer-mask {
-        width : auto !important;
-    }
+    ::ng-deep {
+        .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider,
+        .p-toggleswitch-input:hover {
+            background: $bgcolor-toggleOn !important;
+        }
 
-    .p-drawer .p-button {
-        color: rgb(225, 225, 225) !important;
-        border-color: rgba(181, 181, 181, 0.427) !important 
-    }
+        .p-toggleswitch .p-toggleswitch-slider,
+        .p-toggleswitch-input:hover {
+            background: $bgcolor-toggleOff !important;
+        }
 
- 
-    .hover-text:hover {
-        i, span {
+        .p-toggleswitch .p-toggleswitch-handle {
+            background-color: transparent !important;
+            color: $color-toggleIcon !important;
 
-            color: rgb(69 142 255) !important;
+            i {
+                font-weight: 600;
+            }
         }
     }
 
-    .hover-bg:hover {
-       background-color: rgb(164 212 255 / 19%);
+    .hover-text:hover,
+    .active-category {
+        background-color: $bgcolor-slectedBg;
+
+        i,
+        span {
+            color: $color-seletedFont !important;
+        }
     }
 
     .overflow-y-auto::-webkit-scrollbar {
         display: none;
     }
 
-    .active-category {
-         background-color: rgb(164 212 255 / 19%) !important;
-          i, span {
+  
 
-            color: rgb(69 142 255) !important;
+    * {
+        box-sizing: border-box !important;
+
+    }
+
+
+    .slide-down {
+        animation: slideDown 0.3s linear forwards alternate;
+    }
+
+    @keyframes slideDown {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(-270deg);
         }
     }
 
-   
+    .slide-up {
+        animation: slideUp 0.3s linear forwards alternate;
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: rotate(-270deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    .sidebar {
+        transition: all 0.3s ease-in-out;
+        background: rgba(255, 255, 255, 1);
+        border-radius: 8px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(8.7px);
+        -webkit-backdrop-filter: blur(6.7px);
+    }
+
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .on-expand-block {
+        display: none;
+    }
+
+    .on-expand-flex {
+        display: none;
+    }
+
+    .slide-title {
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+    }
+
+    .cust-font {
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: #000000da;
+    }
+
+    .item-icon {
+        color: #000000da;
+    }
+
+    .pi-chevron-right {
+        font-size: 0.75rem !important;
+        color: #000000da;
+    }
+
+    .fixed-bar {
+        width: 350px;
+
+        .slide-list {
+            justify-content: start !important;
+        }
+
+        .on-expand-block {
+            display: block;
+        }
+
+        .on-expand-flex {
+            display: flex;
+        }
+
+        ul {
+            padding-right: 0.75rem;
+        }
+    }
+
+
+    .sidebar:hover {
+        width: 350px;
+        .slide-list {
+            justify-content: start !important;
+        }
+
+        .on-expand-block {
+            display: block;
+        }
+
+        .on-expand-flex {
+            display: flex;
+        }
+
+        ul {
+            padding-right: 0.75rem;
+        }
+    }
+
+    .footer {
+        background: rgba(255, 255, 255, 1);
+        color: $color-footerColor;
+    }
+
+
 }

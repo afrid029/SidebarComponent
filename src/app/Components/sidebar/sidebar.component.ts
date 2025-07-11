@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, inject, Input, OnInit, Output, signal, ViewChild } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import { Ripple } from 'primeng/ripple';
@@ -14,20 +14,17 @@ import { ToggleSwitch, ToggleSwitchChangeEvent } from 'primeng/toggleswitch';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [AvatarModule, DrawerModule, ButtonModule, Ripple, StyleClass, SelectButton, FormsModule, CommonModule, ToggleSwitch],
+  imports: [AvatarModule, ButtonModule, Ripple, StyleClass, SelectButton, FormsModule, CommonModule, ToggleSwitch],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent implements OnInit {
-  @ViewChild('drawerRef') drawerRef!: Drawer;
-  @Input() visible: boolean = false;
+ @Output() sideBarHandle = new EventEmitter();
   @ViewChild('sideBar') sideBar!: ElementRef;
-  options : any[] = [
-    {label : "Admin" , value : "admin"},
-    {label : "User" , value : "user"},
-  ]
-  role : string = 'admin'
-  checked : boolean = false;
+  isMobile = signal<boolean>(false);
+  startX = signal<number>(0);
+  endX = signal<number>(0);
+
 
   private _content : GetContentService = inject(GetContentService);
   private _router : Router = inject(Router);
@@ -36,31 +33,27 @@ export class SidebarComponent implements OnInit {
   Contents : any [] =[];
 
 ngOnInit(): void {
+      this.isMobile.set(window.innerWidth <= 645 ? true : false);
    this.loadSideBar();
 }
 
 loadSideBar() {
-    this.Contents = this._content.getSideBarContents(this.role)
+    this.Contents = this._content.getSideBarContents('admin')
 }
 
 openSlideBar() {
-    console.log(this.role);
    this.loadSideBar()
-    this.visible = true;
 }
 
 toggleFix($event : ToggleSwitchChangeEvent){
     const toggleBtn = $event.originalEvent.currentTarget as HTMLElement;
     const state = $event.checked;
-    // console.log(toggleBtn.classList);
     
     if(state) {
-        // toggleBtn.classList.add('')
         this.sideBar.nativeElement.classList.add('fixed-bar')
     } else {
         this.sideBar.nativeElement.classList.remove('fixed-bar')
     }
-    // console.log();
     
 }
 
@@ -78,21 +71,15 @@ toggleMain($event : Event) {
 }
 toggleParent($event : Event) {
     const parent = $event.currentTarget as HTMLElement;
-    console.log(parent.classList);
-    
-    
+
     if(parent.classList.contains('active-category')){
         parent.classList.remove('active-category');
         const icon = parent.childNodes[2] as HTMLElement;
-        // icon.classList.remove('pi-chevron-down');
-        // icon.classList.add('pi-chevron-right');
         icon.classList.remove('slide-down');
         icon.classList.add('slide-up');
     } else {
         parent.classList.add('active-category');
         const icon = parent.childNodes[2] as HTMLElement;
-        // icon.classList.remove('pi-chevron-right');
-        // icon.classList.add('pi-chevron-down');
         icon.classList.remove('slide-up');
         icon.classList.add('slide-down');
         
@@ -101,17 +88,42 @@ toggleParent($event : Event) {
 }
 
 navigateTo(path : string) {
-    console.log('path ',path);
-    
     this._router.navigateByUrl(path);
-    this.visible = false;
+    this.isMobile() ? this.sideBarHandle.emit() : '';
 }
 
+openMobileMenu() {
+    const classList = this.sideBar.nativeElement.classList;
 
-    closeCallback(e: Event): void {
-        this.drawerRef.close(e);
-        // this.visible = false;
-
+    if(classList.contains('mobile-side')) {
+        classList.add('off-mobile-side')
+        setTimeout(() => {
+            classList.remove('mobile-side')
+            classList.remove('off-mobile-side')
+        },300)
     }
+    else {
+        classList.add('mobile-side')
+    }
+    
+    
+}
+
+touchStart(event : TouchEvent) {
+    this.startX.set(event.changedTouches[0].screenX);
+    
+}
+
+touchEnd(event : TouchEvent) {
+
+    this.endX.set(event.changedTouches[0].screenX);
+    const diffInX = this.startX() - this.endX();
+    if(this.isMobile() && diffInX > 70) {
+        this.sideBarHandle.emit();
+    }
+    
+    
+}
+
 
 }
