@@ -1,25 +1,27 @@
 @import './variable.scss';
 
 @mixin sidebar() {
+    * {
+        box-sizing: border-box !important;
 
-    ::ng-deep {
-        .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider,
-        .p-toggleswitch-input:hover {
-            background: $bgcolor-toggleOn !important;
-        }
+    }
 
-        .p-toggleswitch .p-toggleswitch-slider,
-        .p-toggleswitch-input:hover {
-            background: $bgcolor-toggleOff !important;
-        }
+    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider,
+    .p-toggleswitch-input:hover {
+        background: $bgcolor-toggleOn !important;
+    }
 
-        .p-toggleswitch .p-toggleswitch-handle {
-            background-color: transparent !important;
-            color: $color-toggleIcon !important;
+    .p-toggleswitch .p-toggleswitch-slider,
+    .p-toggleswitch-input:hover {
+        background: $bgcolor-toggleOff !important;
+    }
 
-            i {
-                font-weight: 600;
-            }
+    .p-toggleswitch .p-toggleswitch-handle {
+        background-color: transparent !important;
+        color: $color-toggleIcon !important;
+
+        i {
+            font-weight: 600;
         }
     }
 
@@ -37,49 +39,22 @@
         display: none;
     }
 
-  
-
-    * {
-        box-sizing: border-box !important;
-
-    }
-
-
     .slide-down {
         animation: slideDown 0.3s linear forwards alternate;
-    }
-
-    @keyframes slideDown {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(-270deg);
-        }
     }
 
     .slide-up {
         animation: slideUp 0.3s linear forwards alternate;
     }
 
-    @keyframes slideUp {
-        0% {
-            transform: rotate(-270deg);
-        }
-
-        100% {
-            transform: rotate(0deg);
-        }
-    }
-
     .sidebar {
         transition: all 0.3s ease-in-out;
-        background: rgba(255, 255, 255, 1);
-        border-radius: 8px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        background: $bgcolor-default;
+        border-radius: 0px;
+        box-shadow: $boxshadow-sidebar;
         backdrop-filter: blur(8.7px);
         -webkit-backdrop-filter: blur(6.7px);
+        border-left: 4px solid $color-sidebarLeft;
     }
 
     .sidebar::-webkit-scrollbar {
@@ -104,16 +79,16 @@
         font-family: "Inter", sans-serif;
         font-weight: 400;
         font-size: 0.9rem;
-        color: #000000da;
+        color: $color-sidebarContent;
     }
 
     .item-icon {
-        color: #000000da;
+        color: $color-sidebarContent;
     }
 
     .pi-chevron-right {
         font-size: 0.75rem !important;
-        color: #000000da;
+        color: $color-sidebarContent;
     }
 
     .fixed-bar {
@@ -133,12 +108,14 @@
 
         ul {
             padding-right: 0.75rem;
+            padding-left: 0.75rem;
         }
     }
 
 
     .sidebar:hover {
         width: 350px;
+
         .slide-list {
             justify-content: start !important;
         }
@@ -153,13 +130,87 @@
 
         ul {
             padding-right: 0.75rem;
+            padding-left: 0.75rem;
         }
+    }
+
+
+    .mobile-side {
+        display: block;
+        z-index: 1000 !important;
+        position: fixed !important;
+        width: 300px !important;
+
+        .mobile-view.on-expand-block {
+            display: block !important;
+        }
+
+        transform: translateY(-10%);
+        animation: drilldown 0.2s linear forwards alternate;
+
+        ul {
+            padding-right: 0.75rem;
+            padding-left: 0.75rem;
+        }
+    }
+
+    .off-mobile-side {
+        animation: slideLeft 0.3s linear forwards alternate;
     }
 
     .footer {
         background: rgba(255, 255, 255, 1);
         color: $color-footerColor;
     }
+
+
+    @keyframes slideDown {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(-270deg);
+        }
+    }
+
+    @keyframes slideUp {
+        0% {
+            transform: rotate(-270deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+    }
+
+    @keyframes drilldown {
+        0% {
+            opacity: 0;
+            transform: translateY(-25%);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+
+    @keyframes slideLeft {
+        0% {
+            opacity: 1;
+            transform: translateX(0%);
+            display: none;
+        }
+
+        100% {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+
+
 
 
 }

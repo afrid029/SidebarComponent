@@ -1,12 +1,14 @@
-<nav class="float-right sm:hidden">
-    <p-button (onClick)="openSidebar()" [icon]="icon" [rounded]="true" [text]="true" severity="danger" />
+<!-- <nav class="float-right sm:hidden">
+    <p-button (onClick)="openSidebar()" [icon]="icon()" [rounded]="true" [text]="true" severity="danger" />
 
-</nav>
-<div class="flex gap-3 relative w-full h-[100vh] bg-white">
-    <app-sidebar (sideBarHandle)="openSidebar()" class="mobile-side"></app-sidebar>
-    <div class="relative">
-        <h1>AppComponent</h1>
-        <router-outlet/>
+</nav> -->
+<div class="flex flex-col h-screen">
+    <app-navbar></app-navbar>
+    <div class="flex flex-1 gap-3 relative w-full bg-white">
+        <app-sidebar></app-sidebar>
+        <div class="relative">
+            <h1>AppComponent</h1>
+            <router-outlet />
+        </div>
     </div>
 </div>
-

@@ -1,7 +1,29 @@
+//General
+$color-fontdefault : black;
+$bgcolor-default : white;
+
+//Sidebar
 $color-seletedFont : rgb(69 142 255);
 $color-toggleIcon : $color-seletedFont;
-$color-footerColor : rgb(7, 42, 94);
+$color-footerColor : rgba(7, 42, 94, 0.45);
+$color-sidebarLeft : rgba(12, 99, 230, 0.769);
+$color-sidebarContent : #000000da;
+//Navbar
+$color-navOptionBottomBorder : #044c8f;
+$color-avatar : #555353a8;
 
+//Sidebar
 $bgcolor-slectedBg :  rgb(164 212 255 / 19%);
 $bgcolor-toggleOn : rgb(113 168 239 / 28%); 
 $bgcolor-toggleOff : rgb(66 131 235 / 44%);
+
+//Navbar
+$bgcolor-navShadowBg : rgb(65 124 181 / 47%);
+$bgcolor-menubar : white;
+$bgcolor-lightshadow : #dae5f9;
+
+//Sidebar
+$boxshadow-sidebar : 0 4px 30px rgba(0, 0, 0, 0.1);
+
+//Navbar
+$borderright-navbar : 6px solid rgba(58, 130, 239, 0.769);

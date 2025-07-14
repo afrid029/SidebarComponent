@@ -1,0 +1,47 @@
+<div class="card relative p-3 ">
+    <div class="absolute card-bg"></div>
+    <p-menubar class="z-10">
+        <ng-template #end >
+            <div [class]="navOptionClass()">
+               <a pRipple class="flex items-center  p-menubar-item-link">
+                   <i class='mr-auto text-sm pi pi-home' ></i>
+                   <span class="text-sm">Home</span>
+                </a>
+                <hr class="line m-0"/>
+            </div>
+            <div [class]="navOptionClass()">
+                <a pRipple class="flex items-center p-menubar-item-link">
+                  
+                  <i class='mr-auto text-sm pi pi-bell'></i>
+                  <span class="text-sm">Notification</span>
+                </a>
+                 <hr class="line m-0"/>
+            </div>
+            <div [class]="profileClass()">
+                <p-avatar icon="pi pi-user" class="mr-2" size="normal"  shape="circle" />
+                <p-splitbutton class="text-sm" (onClick)="navigateTo('/profile')"  label="Mohammed Afrid" [model]="profileOptions" outlined />
+            </div>
+            <div [class]="mobileNavClass()">
+                 <p-button [rounded]="true" (onClick)="handleMobileNavbar()" [icon]="mobileNavIcon()" [text]="true" severity="info" />
+            </div>
+        </ng-template>
+        <!-- <ng-template #start>
+            <h4>daasda</h4>
+
+        </ng-template>
+
+        <ng-template #item let-item let-root="root">
+            <h4>dsaad</h4>
+          <a pRipple class="flex items-center p-menubar-item-link">
+                <span>Label Name</span>
+               
+                <i class='ml-auto pi pi-angle-right'></i>
+            </a>
+        </ng-template>
+        <ng-template #end>
+            <div class="flex items-center gap-2">
+                <input type="text" pInputText placeholder="Search" class="w-36" />
+            </div>
+        </ng-template> -->
+    </p-menubar>
+</div>

@@ -1,0 +1,97 @@
+@import './variable.scss';
+@mixin navbar() {
+    .card {
+
+        background-image: url('../../assets/test.jpg') !important;
+        background-size: cover !important;
+        border-radius: 0px !important;
+        border: transparent !important;
+    }
+
+    .card-bg {
+        background-color: $bgcolor-navShadowBg;
+        width: 100%;
+        border-radius: 0px !important;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .p-menubar {
+        background-color: $bgcolor-menubar !important;
+        padding: 12px;
+        border: transparent !important;
+        font-family: "Inter", sans-serif;
+        border-right: $borderright-navbar  !important;
+
+    }
+
+    .p-menubar-end {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        color: $color-fontdefault ;
+        transition: all 0.3s linear;
+
+    }
+
+    .line {
+
+        width: 0%;
+        height: 5px;
+        color: $color-navOptionBottomBorder;
+        transition: all 0.3s linear;
+    }
+
+    .p-menubar-end div:hover .line {
+        display: block;
+        width: 100%;
+    }
+    .p-avatar {
+        background-color: $bgcolor-lightshadow !important;
+    }
+
+    .p-avatar-icon {
+        color: $color-avatar !important;
+    }
+
+    .p-button-outlined {
+        border: transparent !important;
+    }
+
+    .p-button-outlined:not(:disabled):active {
+        background-color: $bgcolor-lightshadow !important;
+    }
+
+    .p-button-label {
+        color: $color-fontdefault;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    .p-iconwrapper {
+        font-size: 0.875rem;
+        color: $color-fontdefault   ;
+    }
+
+    .p-tieredmenu {
+        background-color: $bgcolor-default !important;
+        border: transparent !important;
+        font-family: "Inter", sans-serif;
+        margin-top: 0.55rem !important;
+    }
+
+    .p-tieredmenu-item-content:hover {
+        background-color: $bgcolor-lightshadow !important;
+    }
+
+    .p-tieredmenu-item.p-focus > .p-tieredmenu-item-content {
+        background-color: $bgcolor-lightshadow !important;
+    }
+
+    .p-tieredmenu-item-label {
+        color: $color-fontdefault;
+        font-size: 0.8rem !important;
+    }
+
+}

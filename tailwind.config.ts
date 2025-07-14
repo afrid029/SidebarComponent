@@ -8,7 +8,7 @@ export default {
     plugins: [PrimeUI],
     theme: {
         screens: {
-            sm: '576px',
+            sm: '599.98px',
             md: '768px',
             lg: '992px',
             xl: '1200px',
